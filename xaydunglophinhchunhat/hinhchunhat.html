@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1000px" height="800px" style="border: 1px solid #d3d3d3;"></canvas>
+<script>
+   let hinhcn= function hinhcn(x,y,cd,cr,dt,cv) {
+        this.cd=cd;
+        this.cr=cr;
+        this.x=x;
+        this.y=y;
+        this.dt=dt;
+        this.cv=cv;
+        
+        this.cd=function () {
+            return cd;
+        }
+
+        this.cr=function () {
+            return cr;
+        }
+        this.dt=function () {
+            return cd*cr;
+        }
+
+        this.cv=function () {
+            return (cd+cr)*2;
+        }
+        this.x=function () {
+            return x;
+        }
+        this.y=function () {
+            return y;
+        }
+
+    };
+
+
+
+
+
+    function vehcn()
+    {
+    var c =document.getElementById("myCanvas").getContext("2d");
+        let xrandom=Math.floor(Math.random()*window.innerHeight);
+        let yrandom=Math.floor(Math.random()*window.innerWidth);
+        let hcn=new hinhcn(xrandom,yrandom,200,130);
+        let chuvi=hcn.cv();
+        let dientich=hcn.dt();
+        let chieudai=hcn.cd();
+        let chieurong=hcn.cr();
+
+        alert(hcn.x()+"chieu dai la  "+chieudai+" chieu rong la "+chieurong+" Dien tich hinh chu nhat la "+dientich+" chu vi hinh chu nhat la "+chuvi);
+
+        c.fillStyle="#3e51ff";
+    c.fillRect(hcn.x(),hcn.y(),chieudai,chieurong);
+    }
+
+  vehcn();
+
+
+
+</script>
+</body>
+</html>
